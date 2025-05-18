@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Delicious</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('mainbackdrop.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0); /* Add a dark overlay for better text visibility */
+    }
+
+    h1 {
+      font-size: 4rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .buttons button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      color: white;
+      background-color: #ff5722;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .buttons button img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .buttons button:hover {
+      background-color: #e64a19;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Hotel Delicious</h1>
+    <div class="buttons">
+        <button onclick="location.href='veg.html'" style="background: url('fire.jpg') no-repeat center center; background-size: cover; color: white; padding: 20px 40px; font-size: 2.5rem; border: none; border-radius: 10px; cursor: pointer; opacity: 0.8; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <span style="background-color: rgba(0, 0, 0, 0); padding: 10px 20px; border-radius: 5px;">Veg</span>
+        </button>
+        <button onclick="location.href='nonveg.html'" style="background: url('fire.jpg') no-repeat center center; background-size: cover; color: white; padding: 20px 40px; font-size: 2.5rem; border: none; border-radius: 10px; cursor: pointer; opacity: 0.8; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <span style="background-color: rgba(0, 0, 0, 0); padding: 5px 10px; border-radius: 5px;">Non-Veg</span>
+        </button>
+    </div>
+</div>
+
+<style>
+    .buttons button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        opacity: 1;
+    }
+
+    .buttons button:active {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
+    </div>
+  </div>
+</body>
+</html>

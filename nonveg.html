@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vegetarian Menu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #5d5b5b;
+      color: #f0f0f0;
+      padding: 20px;
+    }
+
+    .menu-container {
+      max-width: 1100px;
+      margin: auto;
+      background: #666262;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: #81c784;
+    }
+
+    header p {
+      font-size: 1.1em;
+      color: #aaa;
+    }
+
+    .menu-actions {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .menu-actions input {
+      padding: 8px 12px;
+      font-size: 1em;
+      width: 100%;
+      max-width: 300px;
+      border: none;
+      border-radius: 6px;
+      background: #1e1e1e;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .menu-actions button {
+      padding: 10px 18px;
+      font-size: 1em;
+      background-color: #66bb6a;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .menu-column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    section h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #aed581;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #3d3b3b;
+      border-left: 4px solid #66bb6a;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s;
+    }
+
+    li:hover {
+      background: #2c2c2c;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .menu-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .item-name {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .item-price {
+      color: #81c784;
+      font-weight: bold;
+    }
+
+    /* New Dessert Section */
+    .desserts-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px 0;
+    }
+
+    .dessert-card {
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dessert-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .dessert-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .dessert-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .dessert-price {
+      color: #81c784;
+      font-size: 1.1em;
+    }
+
+    /* Responsive for mobile devices */
+    @media (max-width: 768px) {
+      .columns {
+        flex-direction: column;
+      }
+
+      .desserts-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .desserts-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      background-color: #66bb6a;
+      color: #fff;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+    }
+
+    .back-to-top:hover {
+      background-color: #81c784;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-container">
+    <header>
+      <h1>🍗 Non Vegetarian Delights</h1>
+      <p>Fresh. Healthy. Delicious.</p>
+    </header>
+    <div class="menu-actions" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <button onclick="location.href='WelcomePage.html'" style="padding: 10px 20px; font-size: 1em; background-color: #66bb6a; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        🏠 Home
+      </button>
+      <input type="text" id="searchInput" placeholder="Search menu..." style="flex: 1; margin: 0 10px;" />
+      <!-- <button onclick="window.print()" style="padding: 10px 20px; font-size: 1em; background-color: #66bb6a; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        🖨️ Print / Download PDF
+      </button> -->
+    </div>
+
+    <div class="columns" id="menu">
+      <!-- Column 1 -->
+      <div class="menu-column">
+        <section>
+          <h2>🥣 Soups</h2>
+          <ul id="soups-list"></ul>
+        </section>
+
+        <section>
+          <h2>🍗 Starters</h2>
+          <ul id="starters-list"></ul>
+        </section>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="menu-column">
+        <section>
+          <h2>🍜 Rice & Noodles</h2>
+          <ul id="rice-noodles-list"></ul>
+        </section>
+
+        <section>
+          <h2>🍨 Desserts</h2>
+          <div class="sweets" id="sweets"></div>
+        </section>
+      </div>
+    </div>
+    <div style="text-align: center; margin-bottom: 50px;">
+      <button onclick="location.href='veg.html'" style="padding: 10px 20px; font-size: 1em; background-color: #66bb6a; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        🧆 Veg Menu
+      </button>
+    </div>
+  </div>
+
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    const menuData = {
+      soups: [
+        { name: "chicken Soup", price: 120, img: "https://media.istockphoto.com/id/1341044531/photo/chicken-noodle-soup-bowl-top-view-on-a-colored-table.jpg?s=612x612&w=0&k=20&c=LFun2_aRaxsUzMwrCovbCFc1yF70j_s3QyU6H2arGUI=" },
+        { name: "chicken Sweet Corn Soup", price: 110, img: "https://media.istockphoto.com/id/1350628959/photo/vegetable-soup-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=9JfwZoYSfntD2-fMV6m8q6f_QDVfcwUX_QW58S_YJMA=" },
+        { name: "chicken Tomato Basil Soup", price: 120, img: "https://media.istockphoto.com/id/1341044531/photo/chicken-noodle-soup-bowl-top-view-on-a-colored-table.jpg?s=612x612&w=0&k=20&c=LFun2_aRaxsUzMwrCovbCFc1yF70j_s3QyU6H2arGUI=" },
+        { name: "mutton Soup", price: 110, img: "https://media.istockphoto.com/id/1350628959/photo/vegetable-soup-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=9JfwZoYSfntD2-fMV6m8q6f_QDVfcwUX_QW58S_YJMA=" }],
+      starters: [
+        { name: "chicken Tikka", price: 180, img: "https://media.istockphoto.com/id/1331483551/photo/indian-tandoori-chicken-bbq-chicken-appetizer-non-veg-recipe.jpg?s=612x612&w=0&k=20&c=f2TJs1sM1S5CH2NQk8_Gyec5zBCFShOABn_ABYDRMzk=" },
+        { name: "chicken Kebab", price: 150, img: "https://media.istockphoto.com/id/1435030623/photo/chicken-lolipop-chicken-winglet-tandoori-chicken-famous-indian-non-veg-dish-roasted-chicken.jpg?s=612x612&w=0&k=20&c=SQENlAaegB1f16N2nDcIE0Uc9N0yRS7ETg4wlNCK_pU=" },
+        { name: "mutton Tikka", price: 180, img: "https://media.istockphoto.com/id/1331483551/photo/indian-tandoori-chicken-bbq-chicken-appetizer-non-veg-recipe.jpg?s=612x612&w=0&k=20&c=f2TJs1sM1S5CH2NQk8_Gyec5zBCFShOABn_ABYDRMzk=" },
+        { name: "mutton Kebab", price: 150, img: "https://media.istockphoto.com/id/1435030623/photo/chicken-lolipop-chicken-winglet-tandoori-chicken-famous-indian-non-veg-dish-roasted-chicken.jpg?s=612x612&w=0&k=20&c=SQENlAaegB1f16N2nDcIE0Uc9N0yRS7ETg4wlNCK_pU=" }, 
+        { name: "Grill chicken", price: 180, img: "https://media.istockphoto.com/id/1331483551/photo/indian-tandoori-chicken-bbq-chicken-appetizer-non-veg-recipe.jpg?s=612x612&w=0&k=20&c=f2TJs1sM1S5CH2NQk8_Gyec5zBCFShOABn_ABYDRMzk=" },
+        { name: "steam chicken Kebab", price: 150, img: "https://media.istockphoto.com/id/1435030623/photo/chicken-lolipop-chicken-winglet-tandoori-chicken-famous-indian-non-veg-dish-roasted-chicken.jpg?s=612x612&w=0&k=20&c=SQENlAaegB1f16N2nDcIE0Uc9N0yRS7ETg4wlNCK_pU=" }
+      ],
+      riceNoodles: [
+        { name: "chicken Hakka Noodles", price: 200, img: "https://media.istockphoto.com/id/1051749178/photo/spicy-asian-noodles-with-chicken-and-vegetables.jpg?s=612x612&w=0&k=20&c=KHjRA5-JdmXO00SeeXzBXhUyuoi3lkV_ZcT-2epAd-0=" },
+        { name: "Chicken Biryani", price: 180, img: "https://media.istockphoto.com/id/488481490/photo/fish-biryani-with-basmati-rice-indian-food.jpg?s=612x612&w=0&k=20&c=9xEw3VOQSz9TP8yQr60L47uExyKF9kogRhQdlghlC00=" },
+        { name: "mutton Hakka Noodles", price: 200, img: "https://media.istockphoto.com/id/1051749178/photo/spicy-asian-noodles-with-chicken-and-vegetables.jpg?s=612x612&w=0&k=20&c=KHjRA5-JdmXO00SeeXzBXhUyuoi3lkV_ZcT-2epAd-0=" },
+        { name: "mutton Biryani", price: 180, img: "https://media.istockphoto.com/id/488481490/photo/fish-biryani-with-basmati-rice-indian-food.jpg?s=612x612&w=0&k=20&c=9xEw3VOQSz9TP8yQr60L47uExyKF9kogRhQdlghlC00=" },
+        { name: "Chicken/Egg Fried Rice", price: 200, img: "https://media.istockphoto.com/id/1051749178/photo/spicy-asian-noodles-with-chicken-and-vegetables.jpg?s=612x612&w=0&k=20&c=KHjRA5-JdmXO00SeeXzBXhUyuoi3lkV_ZcT-2epAd-0=" }
+      ],
+      sweets: [
+        { name: "Milk Sweet", price: 200, img: "https://media.istockphoto.com/id/1054228718/photo/indian-sweets-in-a-plate-includes-gulab-jamun-rasgulla-kaju-katli-morichoor-bundi-laddu.jpg?s=612x612&w=0&k=20&c=hYWCXLaldKvhxdBa83M0RnUij7BCmhf-ywWdvyIXR40=" },
+        { name: "Mysore Pak", price: 180, img: "https://media.istockphoto.com/id/1054228718/photo/indian-sweets-in-a-plate-includes-gulab-jamun-rasgulla-kaju-katli-morichoor-bundi-laddu.jpg?s=612x612&w=0&k=20&c=hYWCXLaldKvhxdBa83M0RnUij7BCmhf-ywWdvyIXR40=" },
+        { name: "Kova", price: 200, img: "https://media.istockphoto.com/id/1054228718/photo/indian-sweets-in-a-plate-includes-gulab-jamun-rasgulla-kaju-katli-morichoor-bundi-laddu.jpg?s=612x612&w=0&k=20&c=hYWCXLaldKvhxdBa83M0RnUij7BCmhf-ywWdvyIXR40=" },
+        { name: "milk Sweet", price: 180, img: "https://media.istockphoto.com/id/1054228718/photo/indian-sweets-in-a-plate-includes-gulab-jamun-rasgulla-kaju-katli-morichoor-bundi-laddu.jpg?s=612x612&w=0&k=20&c=hYWCXLaldKvhxdBa83M0RnUij7BCmhf-ywWdvyIXR40=" },
+        { name: "sweet", price: 180, img: "https://media.istockphoto.com/id/1054228718/photo/indian-sweets-in-a-plate-includes-gulab-jamun-rasgulla-kaju-katli-morichoor-bundi-laddu.jpg?s=612x612&w=0&k=20&c=hYWCXLaldKvhxdBa83M0RnUij7BCmhf-ywWdvyIXR40=" }
+      ],
+    };
+
+    // Function to load menu items dynamically
+    function loadMenuItems() {
+      const soupsList = document.getElementById("soups-list");
+      const startersList = document.getElementById("starters-list");
+      const riceNoodlesList = document.getElementById("rice-noodles-list");
+
+      menuData.soups.forEach(item => {
+        soupsList.innerHTML += `<li><div class="menu-item"><img src="${item.img}" alt=""><span class="item-name">${item.name}</span></div><span class="item-price">₹${item.price}</span></li>`;
+      });
+
+      menuData.starters.forEach(item => {
+        startersList.innerHTML += `<li><div class="menu-item"><img src="${item.img}" alt=""><span class="item-name">${item.name}</span></div><span class="item-price">₹${item.price}</span></li>`;
+      });
+
+      menuData.riceNoodles.forEach(item => {
+        riceNoodlesList.innerHTML += `<li><div class="menu-item"><img src="${item.img}" alt=""><span class="item-name">${item.name}</span></div><span class="item-price">₹${item.price}</span></li>`;
+      });
+      menuData.sweets.forEach(item => {
+        sweets.innerHTML += `<li><div class="menu-item"><img src="${item.img}" alt=""><span class="item-name">${item.name}</span></div><span class="item-price">₹${item.price}</span></li>`;
+      });
+
+    }
+
+    loadMenuItems();
+
+    // Search functionality
+    document.getElementById("searchInput").addEventListener("input", function() {
+      const filter = this.value.toLowerCase();
+      const allItems = document.querySelectorAll('li, .dessert-card');
+      allItems.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(filter) ? 'block' : 'none';
+      });
+    });
+
+    // Back to Top Button visibility
+    window.addEventListener('scroll', () => {
+      const topButton = document.querySelector('.back-to-top');
+      if (window.scrollY > 300) {
+        topButton.style.display = 'block';
+      } else {
+        topButton.style.display = 'none';
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
